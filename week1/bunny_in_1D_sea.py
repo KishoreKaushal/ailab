@@ -26,9 +26,9 @@ class Agent:
     '''
         next_action:
                     It is a list of two integers in the format (direction, distance).
-                    where direction can take two values 0 and 1 for Left and Right,
+                    Where direction can take two values 0 and 1 for Left and Right,
                     and distance can take a positive value.
-                    This lis can roughly be considered as the policy for the agent 
+                    This list can roughly be considered as the policy for the agent 
                     in the current scenario.
     '''
 
