@@ -10,6 +10,15 @@
 # We won't let bunny die.
 # Let's save the bunny.
 
+# The logic is straightforward.
+# Initial Step: Bunny moves 1 unit distance to left.
+# Further Step: Bunny reverses the direction and 
+#       moves three times the distance it travelled in the previous step.
+# Suppose the bunny is on the origin in the beginning then it moves to the 1 unit left.
+# Now, bunny is at coordinate -1, if shore is not reached reverse the direction and move 
+#   three times the distance travelled in previous step here 3 unit. Hence the bunny is at 
+#   coordinate +2.  
+
 import sys
 import numpy as np
 
