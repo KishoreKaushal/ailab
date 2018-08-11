@@ -14,15 +14,10 @@ import sys
 import numpy as np
 
 class Point():
-    def __init__(self , _x=None, _y=None):
-        if _x is not None and _y is not None:
-            self.x = _x
-            self.y = _y
-        else:
-            self.x = 0
-            self.y = 0
+    def __init__(self , _x=0, _y=0):
+        self.x = _x
+        self.y = _y
 
-    
     def __str__(self):
         return "({0} , {1})".format(self.x, self.y)
     
@@ -87,11 +82,11 @@ class Environment:
     '''
 
     def __init__(self):
-        # p = abs(100)
-        # self.dirt_position = Point(np.random.randint(-p,p) , np.random.randint(-p,p))
-        # self.agent_position = Point(np.random.randint(-p,p) , np.random.randint(-p,p))
-        self.dirt_position = Point(2,7)
-        self.agent_position = Point(-10,-2)
+        p = abs(100)
+        self.dirt_position = Point(np.random.randint(-p,p) , np.random.randint(-p,p))
+        self.agent_position = Point(np.random.randint(-p,p) , np.random.randint(-p,p))
+        # self.dirt_position = Point(2,7)
+        # self.agent_position = Point(-10,-2)
         print("Environment initialized with:")
         print("Dirt position: " , self.dirt_position)
         print("Agent position: ", self.agent_position)
