@@ -30,10 +30,20 @@ class Environment:
     def __init__(self , _d , _L ):
         self.d = int(_d)
         self.L = int(_L)
+
+        # initializing the agents position
         self.agent_position = (int(np.ceil(self.L/2))* np.ones(self.d).astype(np.int))
         
+        # initializing the actions array
+        # for a 1D case, actions array will be initialized with values: 
+        # [ [1]  , [-1]] representing the direction of the motion forward and backward by 1 unit
+        # for a 2D case, actions array will be initialized with values: 
+        # [[1,0] , [0,1] , [-1,0] , [0,-1]] representing the direction of the motions 
+        # right, up, left, and down by 1 unit
+        # and similarly for higher dimensional cases
         self.actions = np.vstack((np.eye(self.d) , -np.eye(self.d))).astype(int)
     
+        # caching the value of total actions in a separate variable
         self.total_actions = int(2*self.d)
         
         print("Environment Initialized With: ")
@@ -49,41 +59,48 @@ class Environment:
     def get_actions(self):
         return self.actions
 
-    def interact(self , action_idx):
-        # current_action = np.array(self.actions[action_idx] , np.int)
+    def interact(self , action_idx):        
+        # get the desired action using the action index from the stored action array
+        # Here current action also represent the displacement of the agent for the current step.
         current_action = self.actions[action_idx]
 
+        # caching the agents current position
         agent_current_position = self.agent_position
 
-        # print("This should be new: " , current_action + self.agent_position)
+        # add the displacement to the current position of the agent
         self.agent_position = current_action + self.agent_position
-        # print("This is the new: " , self.agent_position)
-        # print(np.where(self.agent_position > self.L))
 
         # if some of the coordinates is greater than L
         if np.where(self.agent_position > self.L)[0].shape[0] != 0 or \
         np.where(self.agent_position < 0)[0].shape[0] != 0:
             self.agent_position = agent_current_position
-            # print("But why changed back to: " , self.agent_position)
 
+    # returns true if agent position is in the goal state
     def feedback(self):
         if np.sum(self.agent_position) == self.d * self.L:
             return True
         return False
     
+
+# This week program has a very simple agent which doesn't do any complex calculations.
+# The agent in each step choose an action randomly from the available set of the actions.
 class Agent:
     def __init__(self , total_actions):
+        # agent get to know the total number of available actions
         self.n = total_actions
 
     def choose_action(self):
+        # from the available number of actions agent choose a random action
         return np.random.randint(self.n)
 
 
 def main(argv):
     try:
+        # if any system argument is provided then initialize d and L with those values
         d = int(argv[1])
         L = int(argv[2])
     except:
+        # else take default values
         d = 1
         L = 10
     

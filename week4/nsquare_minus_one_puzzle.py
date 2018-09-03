@@ -17,17 +17,17 @@ class Environment:
         if isinstance(_n , int):
             self.n = _n
             
-            self.grid = [5 , 6, 8, 9, 7, 12, 10, 11, 13, 14, 2, 3, 1, 4, 0, 15]
+            # self.grid = [5 , 6, 8, 9, 7, 12, 10, 11, 13, 14, 2, 3, 1, 4, 0, 15]
 
             # generating a puzzle : value '0' denotes the empty position
             
-            # self.grid = np.arange(1 , self.n*self.n).astype(int)
-            # np.random.shuffle(self.grid)
-            # self.grid = self.grid.tolist() 
-            # self.grid.append(0)
+            self.grid = np.arange(1 , self.n*self.n).astype(int)
+            np.random.shuffle(self.grid)
+            self.grid = self.grid.tolist() 
+            self.grid.append(0)
 
             
-            # printing the puzzle initially
+            # printing the puzzle
             self.render()
 
             print("Initial d(s): {0}".format(self.d()))
