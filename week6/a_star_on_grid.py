@@ -144,7 +144,7 @@ class Agent:
         goal_reached = False
 
         # to limit the search for `cycle` number of steps
-        cycle = 1000
+        cycle = 100000
 
         while len(openStates) != 0 and goal_reached == False and cycle>0:
             # pop an element from the  min heap having lowest f-score
@@ -211,7 +211,11 @@ class Agent:
             cycle-=1
         # print the g-score
         print(g)
-        if goal_reached == True:
+        if cycle > 0 and goal_reached==False:
+            print("Goal Unreachable.")
+        elif cycle == 0 and goal_reached==False:
+            print("Goal Unreachable in cuurent cycle value. Try to increase the steps")
+        elif goal_reached == True:
             # reconstructing the path using backtracing
             path = [self.env.goal_position]
             while True:
