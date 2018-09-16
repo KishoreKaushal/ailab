@@ -3,7 +3,7 @@
 # Kaushal Kishore (bithack)
 # 111601008
 # Week 5
-# Other Group Members: Saptdeep Das (111601020) , Pankaj Kumar (111601014)
+# Other Group Members: Pankaj Kumar (111601014)
 # Question No. 1
 
 # Coding the nsquare_minus_one_puzzle
