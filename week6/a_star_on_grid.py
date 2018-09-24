@@ -3,7 +3,7 @@
 # Kaushal Kishore (bithack)
 # 111601008
 # Week 5
-# Other Group Members: Pankaj Kumar (111601014)
+# Other Group Members: Pankaj Kumar (111601014) , Shiv Kumar Suthar (111601023)
 # Question No. 1
 
 
@@ -130,7 +130,7 @@ class Agent:
         # creating a set for the explored coordinates
         visited = set()     # visited set
 
-        # creating a set for the g(n)
+        # creating a array for the g(n)
         g = np.ones_like(self.env.grid) * float("inf")
         g[self.env.agent_position] = 0
 
